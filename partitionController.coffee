@@ -56,6 +56,7 @@ class PartitionController
       @windowHeight = newHeight
       oldPartitions = _.clone(@partitions)
       @partitions = {}
+			return if @windowHeight == 0
       for i in [0..@windowHeight-parseInt(@partitionSize)] by parseInt(@partitionSize)
         if typeof(oldPartitions[i.toString()]) == "undefined" #if we're going bigger mark it true
           @partitions[i.toString()] = true
@@ -67,6 +68,7 @@ class PartitionController
     new RangeBlock position, requestedSize, @
   _fillPartitions: ()->
     partitions = {}
+		return if @windowHeight == 0
     for i in [0..@windowHeight-@partitionSize] by @partitionSize
       partitions[i.toString()] = true
     partitions
